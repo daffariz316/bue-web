@@ -5,9 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Admin Dashboard </title>
+    <title>Cart Page</title>
     <!-- ======= Styles ====== -->
-    <link rel="stylesheet"href="{{ asset('asset/css/dashboard/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('asset/css/dashboard/style.css') }}">
 </head>
 
 <body>
@@ -31,7 +31,7 @@
                 </li>
 
                 <li>
-                    <a href="{{ url('/dashboard/biaya') }}">
+                    <a href="{{ url('/biaya') }}">
                         <span class="icon">
                             <ion-icon name="swap-horizontal-outline"></ion-icon>
                         </span>
@@ -40,7 +40,7 @@
                 </li>
 
                 <li>
-                    <a href="{{ url('/dashboard/product') }}">
+                    <a href="{{ url('/product') }}">
                         <span class="icon">
                             <ion-icon name="pricetags-outline"></ion-icon>
                         </span>
@@ -49,7 +49,7 @@
                 </li>
 
                 <li>
-                    <a href="{{ url('/dashboard/category') }}">
+                    <a href="{{ url('/category') }}">
                         <span class="icon">
                             <ion-icon name="copy-outline"></ion-icon>
                         </span>
@@ -58,7 +58,7 @@
                 </li>
 
                 <li>
-                    <a href="{{ url('/dashboard/admin') }}">
+                    <a href="{{ url('/admin') }}">
                         <span class="icon">
                             <ion-icon name="people-outline"></ion-icon>
                         </span>
@@ -67,7 +67,7 @@
                 </li>
 
                 <li>
-                    <a href="{{ url('/dashboard/cart') }}">
+                    <a href="{{ url('/cart') }}">
                         <span class="icon">
                             <ion-icon name="cart-outline"></ion-icon>
                         </span>
@@ -76,84 +76,113 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <span class="icon">
                             <ion-icon name="log-out-outline"></ion-icon>
                         </span>
                         <span class="title">Sign Out</span>
                     </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                 </li>
+
             </ul>
         </div>
     </div>
-       <!-- ========================= Main ==================== -->
-<div class="main">
-    <div class="topbar">
-        <div class="toggle">
-            <ion-icon name="menu-outline"></ion-icon>
-        </div>
+    <!-- ========================= Main ==================== -->
+    <div class="main">
+        <div class="topbar">
+            <div class="toggle">
+                <ion-icon name="menu-outline"></ion-icon>
+            </div>
 
-        <div class="search">
-            <label>
-                <input type="text" placeholder="Search here">
-                <ion-icon name="search-outline"></ion-icon>
-            </label>
+            <div class="search">
+                <label>
+                    <input type="text" placeholder="Search here">
+                    <ion-icon name="search-outline"></ion-icon>
+                </label>
+            </div>
+            <div class="dropdown no-arrow">
+                <a class="dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onClick="toggleUserInfo()">
+                    <div class="user"> <!-- Menggunakan div sebagai gantinya -->
+                        <img src="{{ asset('asset/image/defaultProfile.png') }}" alt="Customer Image">
+                    </div>
+                </a>
+                <!-- Dropdown - User Information -->
+                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                    <a class="dropdown-item" href="#">
+                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                        <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ session('admin')->username }}</span>
+                    </a>
+                    <a class="dropdown-item" href="#">
+                        <ion-icon name="mail-outline"></ion-icon>
+                        <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ session('admin')->email }}</span>
+                    </a>
+                </div>
+            </div>
         </div>
-        <div class="user">
-            <img src="{{ asset('asset/image/defaultProfile.png') }}" alt="Customer Image">
-        </div>
-    </div>
-    <div class="main-container">
-        <div class="row">
-            <div class="col-md-12">
-                <button class="insert-button" onclick="window.location.href='{{ route('carts.create') }}'">
-                    <ion-icon name="add-circle-outline"></ion-icon> Insert
-                </button>
-                <div class="table-wrap">
-                    <table class="custom-table">
-                        <thead class="custom-thead">
-                            <tr>
-                                <th>no</th>
-                                <th>Nama Product</th>
-                                <th>Harga</th>
-                                <th>Jumlah</th>
-                                <th>Total</th>
-                                <th>Deskripsi</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($carts as $key => $cart)
-                            <tr class="custom-alert" role="alert">
-                                <td>{{ $key + 1 }}</td>
-                                <td>
-                                    <div class="email">
-                                        <span>{{ $cart->name_product }}</span>
-                                    </div>
-                                </td>
-                                <td>{{ $cart->price }}</td>
-                                <td>{{ $cart->quantity }}</td>
-                                <td>{{ $cart->total }}</td>
-                                <td>{{ $cart->description }}</td>
-                                <td>
-                                    <div class="button-group">
-                                        <button class="edit-button" onclick="window.location.href='{{ route('carts.edit', ['id' => $cart->id]) }}'">
-                                            <ion-icon name="create-outline"></ion-icon>
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+        <div class="main-container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="table-wrap">
+                        <table class="custom-table">
+                            <thead class="custom-thead">
+                                <tr>
+                                    <th>No</th>
+                                    <th>Quantity</th>
+                                    <th>Product ID</th>
+                                    <th>Product Name</th>
+                                    <th>User ID</th>
+                                    <th>User Name</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($carts as $key => $cart)
+                                <tr class="custom-alert" role="alert">
+                                    <td>{{ $key + 1 }}</td>
+                                    <td>{{ $cart->quantity }}</td>
+                                    <td>{{ $cart->product_id }}</td>
+                                    <td>{{ $cart->product->name_product }}</td> <!-- Memanggil nama_produk dari relasi produk -->
+                                    <td>{{ $cart->user_id }}</td>
+                                    <td>{{ $cart->user->username }}</td> <!-- Memanggil username dari relasi pengguna -->
+                                    <td>
+                                        <div class="button-group">
+                                            <button class="edit-button" onclick="window.location.href='{{ route('carts.downloadPDF', ['id' => $cart->id]) }}'">
+                                                Cetak Keranjang
+                                            </button>
+                                        </div>
+                                    </td>
+
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
     <!-- =========== Scripts =========  -->
     <script src="{{ asset('asset/js/main.js') }}"></script>
+    <script>
+        function toggleUserInfo() {
+            var userInfo = document.querySelector(".dropdown-menu");
+            userInfo.classList.toggle("show");
+        }
+
+        // Menambahkan event listener untuk menutup dropdown saat klik di luar dropdown
+        window.addEventListener("click", function(event) {
+            var dropdownMenu = document.querySelector(".dropdown-menu");
+            var userDropdown = document.querySelector(".dropdown-toggle");
+            if (!userDropdown.contains(event.target) && !dropdownMenu.contains(event.target)) {
+                dropdownMenu.classList.remove("show");
+            }
+        });
+
+    </script>
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

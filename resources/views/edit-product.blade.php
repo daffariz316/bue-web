@@ -8,7 +8,7 @@
     <div class="container">
         <div class="card">
             <h1>Edit Produk</h1>
-            <form action="{{ route('products.update', ['id' => $product->id]) }}" method="post">
+            <form action="{{ route('products.update', ['id' => $product->id]) }}" method="post"  enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <!-- Formulir edit -->
@@ -25,11 +25,13 @@
                 <div class="form-group">
                     <label for="description">Deskripsi:</label>
                     <textarea id="description" name="description">{{ $product->description }}</textarea>
+                    <p class="text-muted">Total kalimat: {{ str_word_count($product->description) }}</p>
                 </div>
+
 
                 <div class="form-group">
                     <label for="image">Gambar:</label>
-                    <input type="file" id="image" name="image">
+                    <input type="file" id="image" name="image" value="{{ $product->image }}">
                 </div>
 
                 <div class="form-group">
@@ -46,9 +48,17 @@
 
                 <button type="submit">Simpan Perubahan</button>
             </form>
-
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
             <!-- Formulir untuk tombol hapus -->
-            <form action="{{ route('products.destroy', ['id' => $product->id]) }}" method="post">
+            <form action="{{ route('products.delete', ['id' => $product->id]) }}" method="post">
                 @csrf
                 @method('delete')
                 <button type="submit">Hapus</button>

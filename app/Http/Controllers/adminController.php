@@ -46,4 +46,12 @@ class adminController extends Controller
 
         return redirect()->route('admins.index')->with('success', 'Admin deleted successfully.');
     }
+    // public function adminChart()
+    // {
+    //     // Ambil jumlah admin dari database
+    //     $adminCount = Admin::count();
+
+    //     // Kirim data ke tampilan
+    //     return view('dashboard', compact('adminCount'));
+    // }
 }

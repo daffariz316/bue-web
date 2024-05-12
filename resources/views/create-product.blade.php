@@ -29,8 +29,12 @@
                     <input type="number" id="stock" name="stock" required>
                 </div>
                 <div class="form-group">
-                    <label for="date">Date:</label>
+                    <label for="date">Tanggal :</label>
                     <input type="date" id="date" name="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="image">Image:</label>
+                    <input type="file" id="image" name="image">
                 </div>
                 <button type="submit">Create Product</button>
             </form>

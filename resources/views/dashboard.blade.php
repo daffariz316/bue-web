@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Bue</title>
+    <title>Admin Bu'e</title>
     <!-- ======= Styles ====== -->
     <link rel="stylesheet"href="{{ asset('asset/css/dashboard/style.css') }}">
      <!-- ======= Charts Styles ====== -->
@@ -33,7 +33,7 @@
                 </li>
 
                 <li>
-                    <a href="{{ url('/dashboard/biaya') }}">
+                    <a href="{{ url('/biaya') }}">
                         <span class="icon">
                             <ion-icon name="swap-horizontal-outline"></ion-icon>
                         </span>
@@ -42,7 +42,7 @@
                 </li>
 
                 <li>
-                    <a href="{{ url('/dashboard/product') }}">
+                    <a href="{{ url('/product') }}">
                         <span class="icon">
                             <ion-icon name="pricetags-outline"></ion-icon>
                         </span>
@@ -51,7 +51,7 @@
                 </li>
 
                 <li>
-                    <a href="{{ url('/dashboard/category') }}">
+                    <a href="{{ url('/category') }}">
                         <span class="icon">
                             <ion-icon name="copy-outline"></ion-icon>
                         </span>
@@ -60,16 +60,15 @@
                 </li>
 
                 <li>
-                    <a href="{{ url('/dashboard/admin') }}">
+                    <a href="{{ url('/admin') }}">
                         <span class="icon">
                             <ion-icon name="people-outline"></ion-icon>
                         </span>
                         <span class="title">Admin Account</span>
                     </a>
                 </li>
-
                 <li>
-                    <a href="{{ url('/dashboard/cart') }}">
+                    <a href="{{ url('/cart') }}">
                         <span class="icon">
                             <ion-icon name="cart-outline"></ion-icon>
                         </span>
@@ -78,13 +77,17 @@
                 </li>
 
                 <li>
-                    <a href="#">
+                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <span class="icon">
                             <ion-icon name="log-out-outline"></ion-icon>
                         </span>
                         <span class="title">Sign Out</span>
                     </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                 </li>
+
             </ul>
         </div>
     </div>
@@ -101,8 +104,26 @@
                         <ion-icon name="search-outline"></ion-icon>
                     </label>
                 </div>
-                <div class="user">
-                    <img src="{{ asset('asset/image/defaultProfile.png') }}" alt="Customer Image">
+                <div class="dropdown no-arrow">
+                    <a class="dropdown-toggle" href="#" id="userDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                        onClick="toggleUserInfo()">
+                        <div class="user"> <!-- Menggunakan div sebagai gantinya -->
+                            <img src="{{ asset('asset/image/defaultProfile.png') }}" alt="Customer Image">
+                        </div>
+                    </a>
+                    <!-- Dropdown - User Information -->
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                        aria-labelledby="userDropdown">
+                        <a class="dropdown-item" href="#">
+                            <ion-icon name="person-circle-outline"></ion-icon>
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ session('admin')->username }}</span>
+                        </a>
+                        <a class="dropdown-item" href="#">
+                            <ion-icon name="mail-outline"></ion-icon>
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ session('admin')->email }}</span>
+                        </a>
+                    </div>
                 </div>
             </div>
 
@@ -110,11 +131,23 @@
 <div class="details">
     <div class="recentOrders">
         <div class="cardHeader">
-            <h2>Hallo Selamat Datang Para Admin Sekalian, hari ini</h2>
+            <h2>Selamat Datang, Di Dashboard Admin Kami</h2>
         </div>
+        <div class="cardBox">
+            <div class="card" id="sales-card">
+                <div>
+                    <div class="numbers" id="total-sales">Loading...</div>
+                    <div class="cardName">Sales</div>
+                </div>
+
+                <div class="iconBx">
+                    <ion-icon name="cart-outline"></ion-icon>
+                </div>
+            </div>
+        </div>
+        <h3>Grafik Penjualan dan Pembelian </h3>
         <!-- Tambahkan div untuk menampilkan grafik di sini -->
         <canvas id="myChart"></canvas>
-        <canvas id="myChart1" width="400" height="400"></canvas>
     </div>
 </div>
 
@@ -161,6 +194,36 @@
         data: data,
         options: options
     });
+
+    function toggleUserInfo() {
+    var userInfo = document.querySelector(".dropdown-menu");
+    userInfo.classList.toggle("show");
+}
+
+// Menambahkan event listener untuk menutup dropdown saat klik di luar dropdown
+window.addEventListener("click", function(event) {
+    var dropdownMenu = document.querySelector(".dropdown-menu");
+    var userDropdown = document.querySelector(".dropdown-toggle");
+    if (!userDropdown.contains(event.target) && !dropdownMenu.contains(event.target)) {
+        dropdownMenu.classList.remove("show");
+    }
+});
+function updateTotalSales() {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "/total-sales", true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var data = JSON.parse(xhr.responseText);
+                document.getElementById("total-sales").textContent = data.totalSales;
+            }
+        };
+        xhr.send();
+    }
+
+    updateTotalSales(); // Panggil fungsi saat halaman dimuat
+
+    setInterval(updateTotalSales, 5000); // Panggil fungsi setiap 5 detik untuk memperbarui data secara real-time
+
 </script>
     <!-- =========== Scripts =========  -->
     <script src="{{ asset('asset/js/main.js') }}"></script>
@@ -168,6 +231,11 @@
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <footer class="custom-footer">
+        <div class="custom-container">
+            <p>&copy; 2024 Bu'e Cookies and pastry. All rights reserved.</p>
+        </div>
+    </footer>
 </body>
 
 </html>

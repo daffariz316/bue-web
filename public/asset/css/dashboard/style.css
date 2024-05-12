@@ -10,7 +10,7 @@
 }
 
 :root {
-  --gold: #ECC035;
+  --gold: #DD761C;
   --white: #fff;
   --gray: #f5f5f5;
   --black1: #222;
@@ -254,7 +254,7 @@
 }
 
 .cardBox .card:hover {
-  background: var(--blue);
+  background: var(--gold);
 }
 .cardBox .card:hover .numbers,
 .cardBox .card:hover .cardName,
@@ -801,3 +801,71 @@
 .filter-button:active {
     background-color: #004080;
 }
+/* Dropdown Menu Styles */
+.dropdown {
+    position: relative;
+    display: inline-block; /* Menampilkan elemen div sebagai inline-block */
+}
+
+.dropdown .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    z-index: 1000;
+    display: none;
+    min-width: 10rem;
+    padding: 0.5rem 0;
+    margin: 0.125rem 0 0;
+    font-size: 0.875rem;
+    text-align: right;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 0.35rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.dropdown-menu a {
+    color: #333;
+    text-decoration: none;
+    display: block;
+    padding: 0.5rem 1rem;
+}
+
+.dropdown-menu a:hover {
+    background-color: #f8f9fa;
+}
+
+.dropdown-divider {
+    border-top: 1px solid rgba(0, 0, 0, 0.15);
+    margin: 0.5rem 0;
+}
+
+/* Profile Image Styles */
+.user img {
+    width: 32px; /* Sesuaikan lebar gambar */
+    height: 32px; /* Sesuaikan tinggi gambar */
+    border-radius: 50%;
+    margin-right: 8px;
+}
+.custom-footer {
+    background-color: #f8f9fa;
+    padding: 20px 0;
+}
+
+.custom-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.custom-footer p {
+    margin: 0;
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+}
+

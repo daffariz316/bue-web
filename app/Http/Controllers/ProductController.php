@@ -15,6 +15,18 @@ class ProductController extends Controller
         $products = product::all();
         return view('product', ['products' => $products]);
     }
+    public function loadProduct()
+    {
+        $products = product::all(); // Mengambil semua data produk dari database
+        return view('menu')->with('products', $products); // Meneruskan data produk ke view
+    }
+    public function takeProduct(){
+        // Mengambil lima produk pertama dari database
+    $products = product::take(5)->get();
+
+    // Kirim data produk ke view home.blade.php
+    return view('home', ['products' => $products]);
+    }
 
     public function create()
     {
@@ -23,22 +35,30 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        // Validasi data yang diterima dari form
-        $validatedData = $request->validate([
+        $request->validate([
             'name_product' => 'required|string|max:255',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             'price' => 'required|numeric',
             'description' => 'nullable|string',
             'stock' => 'required|integer',
             'date' => 'required|date',
         ]);
 
+        $imageName = time().'.'.$request->image->extension();
+        $request->image->move(public_path('images'), $imageName);
 
-        // Buat produk baru berdasarkan data yang validasi
-        product::create($validatedData);
+        $product = new Product();
+        $product->name_product = $request->name_product;
+        $product->image = $imageName;
+        $product->price = $request->price;
+        $product->description = $request->description;
+        $product->stock = $request->stock;
+        $product->date = $request->date;
+        $product->save();
 
-        // Redirect ke halaman index produk dengan pesan sukses
-        return redirect()->route('products.index')->with('success', 'Product created successfully.');
+        return redirect(route('products.index'))->with('success', 'Product created successfully.');
     }
+
 
     public function edit($id)
     {
@@ -47,24 +67,34 @@ class ProductController extends Controller
     }
 
     public function update(Request $request, $id)
-    {
-        // Validasi data yang diterima dari form
-        $validatedData = $request->validate([
-            'name_product' => 'required|string|max:255',
-            'price' => 'required|numeric',
-            'description' => 'nullable|string',
-            'stock' => 'required|integer',
-            'date' => 'required|date',
-        ]);
+{
+    $request->validate([
+        'name_product' => 'required|string|max:255',
+        'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+        'price' => 'required|numeric',
+        'description' => 'nullable|string',
+        'stock' => 'required|integer',
+        'date' => 'required|date',
+    ]);
 
-        $product = product::findOrFail($id);
+    $product = product::findOrFail($id);
+    $product->name_product = $request->name_product;
+    $product->price = $request->price;
+    $product->description = $request->description;
+    $product->stock = $request->stock;
+    $product->date = $request->date;
 
-        // Update produk berdasarkan data yang divalidasi
-        $product->update($validatedData);
-
-        // Redirect ke halaman index produk dengan pesan sukses
-        return redirect()->route('products.index')->with('success', 'Product updated successfully.');
+    if ($request->hasFile('image')) {
+        $imageName = time().'.'.$request->image->extension();
+        $request->image->move(public_path('images'), $imageName);
+        $product->image = $imageName;
     }
+
+    $product->save();
+
+    return redirect()->route('products.index')->with('success', 'Product updated successfully.');
+}
+
 
     public function delete($id)
     {
@@ -72,7 +102,11 @@ class ProductController extends Controller
         $product->delete();
 
         // Redirect ke halaman index produk dengan pesan sukses
-        return redirect()->route('product.index')->with('success', 'Product deleted successfully.');
+        return redirect()->route('products.index')->with('success', 'Product deleted successfully.');
+    }
+    public function show(Product $product)
+    {
+        return view('detail-product', compact('product'));
     }
 
 }
