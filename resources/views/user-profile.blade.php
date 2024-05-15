@@ -6,6 +6,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
     <style>
         /* Add your CSS styling here */
+        :root{
+        --orange:#DC6B19;
+        --orange--color: #DD761C;
+        --black:#0C0C0C;
+        --light-color:#666;
+        --box-shadow:0 .5rem 1.5rem rgb(0,0,0,.1);
+        }
         body {
             font-family: Arial, sans-serif;
             background-color: #DD761C;
@@ -44,7 +51,7 @@
         }
 
         .buttons button {
-            background: #3498db;
+            background: var(--black);
             border: none;
             color: white;
             padding: 10px 20px;
@@ -53,6 +60,7 @@
             cursor: pointer;
             outline: none;
         }
+
     </style>
 </head>
 <body>

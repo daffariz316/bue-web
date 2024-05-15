@@ -116,12 +116,12 @@
                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                         aria-labelledby="userDropdown">
                         <a class="dropdown-item" href="#">
-                            <ion-icon name="person-circle-outline"></ion-icon>
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ session('admin')->username }}</span>
+                            <ion-icon name="person-circle-outline" class="align-middle"></ion-icon>
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small align-middle">{{ session('admin')->username }}</span>
                         </a>
                         <a class="dropdown-item" href="#">
-                            <ion-icon name="mail-outline"></ion-icon>
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ session('admin')->email }}</span>
+                            <ion-icon name="mail-outline" class="align-middle"></ion-icon>
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small align-middle">{{ session('admin')->email }}</span>
                         </a>
                     </div>
                 </div>

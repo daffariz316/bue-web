@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tambah Data Biaya</title>
     <link rel="stylesheet" href="{{ asset('asset/css/create/style.css') }}"> <!-- Sesuaikan dengan lokasi CSS Anda -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.11.0/dist/sweetalert2.min.css">
 </head>
 <body>
     <div class="container">
@@ -33,9 +34,19 @@
                 <label for="end_date">Tanggal Selesai:</label>
                 <input type="date" id="end_date" name="end_date"><br>
 
-                <button type="submit">Simpan</button>
+                <button type="submit" id="create-Biaya">Simpan</button>
             </form>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.11.0/dist/sweetalert2.all.min.js"></script>
+    <script>
+        document.getElementById('create-Biaya').addEventListener('click', function() {
+            Swal.fire({
+                title: "Good job!",
+                text: "Biaya created successfully!",
+                icon: "success"
+            });
+        });
+    </script>
 </body>
 </html>

@@ -112,7 +112,7 @@
 
         <div class="box">
             <h3>contact info</h3>
-            <a href="https://wa.me/+62895372499072">Whatsapp</a>
+            <a href="https://wa.me/+6285891088920">Whatsapp</a>
             <a href="mailto: buepastry@gmail.com">Email</a>
             <a href="#">Bekasi, Indonesia - 17121</a>
         </div>
@@ -153,7 +153,7 @@ addToCartButtons.forEach(button => {
             if (response.ok) {
                 // Langsung arahkan pengguna ke percakapan WhatsApp
                 const message = `Saya mau pesan ini ${productName} - Quantity: ${productQuantity}`;
-                const whatsappLink = `whatsapp://send?phone=+62895372499072&text=${encodeURIComponent(message)}`;
+                const whatsappLink = `whatsapp://send?phone=+6285891088920&text=${encodeURIComponent(message)}`;
                 window.location.href = whatsappLink;
             } else {
                 console.error('Failed to add product to cart');

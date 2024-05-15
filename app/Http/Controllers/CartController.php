@@ -9,6 +9,7 @@ use TCPDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken as Middleware;
 class CartController extends Controller
 {
 
@@ -106,5 +107,21 @@ class CartController extends Controller
         // Keluarkan PDF ke browser dan download dengan nama file 'struk_pembelian.pdf'
         $pdf->Output('struk_pembelian.pdf', 'D');
     }
+    // Fungsi untuk menandai pesanan sebagai selesai dan menghapusnya dari keranjang
+    public function markAsFinished($id)
+    {
+        // Temukan pesanan berdasarkan ID
+        $cart = Cart::find($id);
 
+        // Periksa apakah pesanan ditemukan
+        if (!$cart) {
+            return response()->json(['message' => 'Pesanan tidak ditemukan.'], 404);
+        }
+
+        // Hapus pesanan dari keranjang
+        $cart->delete();
+
+        // Kirim respons berhasil
+        return response()->json(['message' => 'Pesanan berhasil ditandai sebagai selesai.'], 200);
+    }
 }

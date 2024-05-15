@@ -112,7 +112,7 @@
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                     <a class="dropdown-item" href="#">
-                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                        <ion-icon name="person-circle-outline" class="align-middle"></ion-icon>
                         <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ session('admin')->username }}</span>
                     </a>
                     <a class="dropdown-item" href="#">
@@ -148,11 +148,9 @@
                                     <td>{{ $cart->user_id }}</td>
                                     <td>{{ $cart->user->username }}</td> <!-- Memanggil username dari relasi pengguna -->
                                     <td>
-                                        <div class="button-group">
-                                            <button class="edit-button" onclick="window.location.href='{{ route('carts.downloadPDF', ['id' => $cart->id]) }}'">
-                                                Cetak Keranjang
-                                            </button>
-                                        </div>
+                                        <button class="button" onclick="window.location.href='{{ route('carts.downloadPDF', ['id' => $cart->id]) }}'">
+                                            <span class="button-content">Download </span>
+                                          </button>
                                     </td>
 
                                 </tr>
@@ -164,6 +162,11 @@
             </div>
         </div>
     </div>
+    <footer class="custom-footer">
+        <div class="custom-container">
+            <p>&copy; 2024 Bu'e Cookies and pastry. All rights reserved.</p>
+        </div>
+    </footer>
 
     <!-- =========== Scripts =========  -->
     <script src="{{ asset('asset/js/main.js') }}"></script>
@@ -183,6 +186,38 @@
         });
 
     </script>
+    {{-- <script>
+        // Fungsi untuk menangani klik pada tombol "Tandai Selesai"
+        function markAsFinished(id) {
+            // Kirim permintaan AJAX untuk menghapus pesanan dari keranjang
+            fetch(`/cart/${id}/finish`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}', // Sesuaikan dengan cara Anda mendapatkan CSRF token
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Hapus baris pesanan dari tabel jika respons OK
+                    document.getElementById(`row-${id}`).remove();
+                    // Tampilkan pesan sukses (opsional)
+                    alert('Pesanan berhasil ditandai sebagai selesai.');
+                }
+                else {
+                    // Tangani kesalahan jika respons tidak OK (opsional)
+                    console.error('Gagal menandai pesanan sebagai selesai:', response.statusText);
+                    alert('Gagal menandai pesanan sebagai selesai. Silakan coba lagi.');
+                }
+            })
+            .catch(error => {
+                // Tangani kesalahan yang tidak terduga (opsional)
+                console.error('Terjadi kesalahan:', error);
+                alert('Terjadi kesalahan. Silakan coba lagi.');
+            });
+        }
+    </script> --}}
+
     <!-- ====== ionicons ======= -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

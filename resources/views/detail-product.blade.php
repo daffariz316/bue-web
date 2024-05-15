@@ -20,9 +20,9 @@
     <nav class="navbar">
         <a href="{{url('/home')}}">home</a>
         <a class="active"  href="{{url('/menu')}}">Product</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact Us</a>
-        <a href="#review">Testimoni</a>
+        <a href="{{url('/home')}}">About</a>
+        <a href="{{url('/home')}}">Contact Us</a>
+        <a href="{{url('/home')}}">Testimoni</a>
     </nav>
 
     <div class="icons">
@@ -69,10 +69,53 @@
         <h3>{{ $product->name_product }}</h3>
         <h5>IDR {{ number_format($product->price, 2) }}</h5>
         <p>{{ $product->description }}</p>
-        <a href="#" class="btn add-to-cart-btn" data-product-id="{{ $product->id }}" data-product-name="{{ $product->name_product }}">Add to Cart</a>
-    </div>
+        <form action="{{ route('cart.add') }}" method="POST" class="add-to-cart-form">
+            @csrf
+            <input type="hidden" name="product_id" value="{{ $product->id }}">
+            <div class="quantity">
+                <label for="quantity{{ $product->id }}">Quantity:</label>
+                <input type="number" id="quantity{{ $product->id }}" name="quantity" value="1" min="1">
+            </div>
+            <button type="button" class="btn add-to-cart-btn" data-product-id="{{ $product->id }}" data-product-name="{{ $product->name_product }}">Add to Cart</button>
+        </form>
+     </div>
   </section>
   <!-- script tags -->
   <script src="{{ asset('asset/js/home/script.js') }}"></script>
+  <script>
+    // JavaScript to handle the "Add to Cart" button click event
+ const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');
+ addToCartButtons.forEach(button => {
+     button.addEventListener('click', () => {
+         const productId = button.getAttribute('data-product-id');
+         const productName = button.getAttribute('data-product-name');
+         const productQuantity = document.getElementById(`quantity${productId}`).value;
+
+         // Kirim data produk ke endpoint Laravel
+         fetch('{{ route("cart.add") }}', {
+             method: 'POST',
+             headers: {
+                 'Content-Type': 'application/json',
+                 'X-CSRF-TOKEN': '{{ csrf_token() }}'
+             },
+             body: JSON.stringify({
+                 product_id: productId,
+                 quantity: productQuantity
+             })
+         }).then(response => {
+             if (response.ok) {
+                 // Langsung arahkan pengguna ke percakapan WhatsApp
+                 const message = `Saya mau pesan ini ${productName} - Quantity: ${productQuantity}`;
+                 const whatsappLink = `whatsapp://send?phone=+6285891088920&text=${encodeURIComponent(message)}`;
+                 window.location.href = whatsappLink;
+             } else {
+                 console.error('Failed to add product to cart');
+             }
+         }).catch(error => {
+             console.error('Error:', error);
+         });
+     });
+ });
+ </script>
 </body>
 </html>

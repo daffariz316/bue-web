@@ -131,6 +131,8 @@ Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add')
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::get('/cart', [CartController::class, 'showCart'])->name('cart.show');
 Route::get('/carts/downloadPDF/{id}', [CartController::class, 'downloadPDF'])->name('carts.downloadPDF');
+// Definisi rute untuk menandai pesanan sebagai selesai dan menghapusnya dari keranjang
+Route::post('/cart/{id}/finish', [CartController::class, 'markAsFinished'])->name('cart.markAsFinished');
 
 
 Route::get('/total-sales', [CartController::class, 'getTotalSales']);

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 12, 2024 at 01:10 PM
+-- Generation Time: May 07, 2024 at 06:32 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -41,9 +41,7 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `username`, `email`, `password`, `created_at`, `updated_at`) VALUES
-(1, 'daffarizqy', 'daffa1@gmail.com', '$2y$10$uxlTK/M0wzPfk3BtYqz1lO8Rzevh/sJTvPVN2wS5M699PIbTVCTB6', '2024-05-06 04:57:10', '2024-05-06 04:57:10'),
-(2, 'daffarizqy', 'daffa2@gmail.com', '$2y$10$sOPcRmi0rEFnMzq1Yi23F.ylmcnZ4Obr8hOI0PYGajuF7omQtOk52', '2024-05-08 23:39:20', '2024-05-08 23:39:20'),
-(3, 'daffarizqy', 'daffa4@gmail.com', '$2y$10$OHL44YXhJ.WHJzaOPFm6NeQZhctIRJno4v0wVcSajj1IG0VdsUAre', '2024-05-08 23:40:04', '2024-05-08 23:40:04');
+(1, 'daffarizqy', 'daffa1@gmail.com', '$2y$10$uxlTK/M0wzPfk3BtYqz1lO8Rzevh/sJTvPVN2wS5M699PIbTVCTB6', '2024-05-06 04:57:10', '2024-05-06 04:57:10');
 
 -- --------------------------------------------------------
 
@@ -127,22 +125,8 @@ CREATE TABLE `keranjang` (
 --
 
 INSERT INTO `keranjang` (`id`, `quantity`, `product_id`, `user_id`, `created_at`, `updated_at`) VALUES
-(36, 1, 1, 1, '2024-05-12 00:36:58', '2024-05-12 00:36:58'),
-(37, 1, 1, 1, '2024-05-12 00:37:01', '2024-05-12 00:37:01'),
-(38, 1, 1, 1, '2024-05-12 00:37:01', '2024-05-12 00:37:01'),
-(39, 1, 1, 1, '2024-05-12 00:37:02', '2024-05-12 00:37:02'),
-(40, 1, 1, 1, '2024-05-12 00:37:02', '2024-05-12 00:37:02'),
-(41, 1, 1, 1, '2024-05-12 00:37:02', '2024-05-12 00:37:02'),
-(42, 1, 1, 1, '2024-05-12 00:37:03', '2024-05-12 00:37:03'),
-(43, 1, 1, 1, '2024-05-12 00:37:31', '2024-05-12 00:37:31'),
-(44, 1, 1, 1, '2024-05-12 00:38:46', '2024-05-12 00:38:46'),
-(45, 1, 1, 1, '2024-05-12 00:40:59', '2024-05-12 00:40:59'),
-(46, 1, 1, 1, '2024-05-12 00:43:05', '2024-05-12 00:43:05'),
-(47, 1, 2, 1, '2024-05-12 00:43:34', '2024-05-12 00:43:34'),
-(48, 1, 1, 1, '2024-05-12 00:43:48', '2024-05-12 00:43:48'),
-(49, 1, 4, 1, '2024-05-12 02:18:07', '2024-05-12 02:18:07'),
-(50, 5, 1, 1, '2024-05-12 02:18:35', '2024-05-12 02:18:35'),
-(51, 5, 1, 1, '2024-05-12 02:18:36', '2024-05-12 02:18:36');
+(1, 1, 1, 1, '2024-05-06 19:15:03', '2024-05-06 19:15:03'),
+(2, 1, 1, 1, '2024-05-06 19:15:06', '2024-05-06 19:15:06');
 
 -- --------------------------------------------------------
 
@@ -243,12 +227,12 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `name_product`, `gambar`, `price`, `description`, `image`, `stock`, `date`, `created_at`, `updated_at`) VALUES
-(1, 'Nastar', NULL, 90000.00, 'Nastar adalah kue khas Indonesia yang terkenal akan rasa manisnya yang lezat dan teksturnya yang renyah. Kue nastar biasanya terdiri dari dua bagian utama, yaitu bagian luar yang berupa kue kering berwarna kuning keemasan dan bagian dalam yang diisi dengan selai nanas atau selai jeruk. Kue ini sering disajikan pada berbagai acara, seperti perayaan hari raya, pernikahan, atau sebagai camilan di waktu senggang.\r\n\r\nKeunikan nastar terletak pada proses pembuatannya yang melibatkan perpaduan antara adonan kue yang renyah dan manis dengan rasa segar dan asam dari selai nanas atau selai jeruk. Proses pembuatannya juga membutuhkan keterampilan khusus dalam membentuk dan mengisi kue agar menghasilkan kue nastar yang sempurna.\r\n\r\nKue nastar juga memiliki sejarah yang kaya dan menjadi bagian penting dari budaya kuliner Indonesia. Kata kunci yang terkait dengan nastar antara lain adalah: kue kering, kue tradisional, selai nanas, camilan, renyah, manis, rasa segar, tekstur, dan perayaan.\r\n\r\n#kue nastar\r\n#cookies nastar\r\n#nastar enak di jakarta\r\n#nastar harga\r\n#nastar homemade\r\n#harga nastar\r\n#nastar indonesia\r\n#jual nastar terdekat\r\n#jual nastar', '1715002762.jpg', 20, '2024-04-20', '2024-05-06 06:05:45', '2024-05-12 03:19:34'),
-(2, 'Palm Cheese', NULL, 40000.00, '\"Palm Cheese\" adalah produk kue keju yang lezat dan menggugah selera yang diproduksi dengan hati-hati menggunakan bahan-bahan berkualitas tinggi dan resep yang disempurnakan. Kue keju ini memiliki rasa yang khas dan tekstur yang lembut, menjadikannya pilihan yang sempurna untuk memuaskan keinginan akan rasa manis dan gurih.\r\n\r\nDiperkaya dengan keju pilihan yang melimpah, \"Palm Cheese\" memberikan cita rasa yang kaya dan lembut di setiap gigitannya. Kombinasi sempurna antara rasa keju yang melimpah dan rasa manis yang lembut membuatnya menjadi favorit bagi pecinta kue di seluruh kalangan.\r\n\r\nSetiap gigitan \"Palm Cheese\" membawa Anda pada perjalanan rasa yang memikat, dari manisnya gula hingga rasa gurih dan kaya dari keju yang meleleh di mulut Anda. Tidak hanya lezat untuk dinikmati sendiri, tetapi kue ini juga sempurna untuk berbagi dengan keluarga dan teman-teman di setiap kesempatan istimewa.\r\n\r\nNikmati kelezatan \"Palm Cheese\" yang sempurna untuk menemani secangkir kopi di pagi hari atau sebagai camilan yang memuaskan kapan pun Anda inginkan. Jangan lewatkan kesempatan untuk merasakan kenikmatan unik dari kue keju yang istimewa ini. Segera nikmati \"Palm Cheese\" dan temukan kenikmatannya sendiri!', '1715001144.jpg', 20, '2024-04-20', '2024-05-06 06:12:24', '2024-05-11 02:02:39'),
-(3, 'Palm Almond', NULL, 50000.00, 'Hadiri setiap acara dengan sentuhan elegan dari Kue Kering Palm Almond kami. Dibuat dengan teliti menggunakan bahan-bahan pilihan, setiap gigitan adalah perpaduan sempurna antara rasa lezat dan tekstur yang renyah, menghadirkan pengalaman yang tak terlupakan bagi lidah Anda.\r\n\r\nSentuhan Kaya Rasa dalam Setiap Gigitan\r\n\r\nKue Kering Palm Almond kami adalah perpaduan ajaib antara kekayaan rasa palm sugar dan aroma gurih almond yang memukau. Dibentuk dengan hati-hati dan dipanggang dengan sempurna, setiap kue menawarkan kesempurnaan rasa yang mengejutkan dan memuaskan.', '1715003287.jpg', 20, '2024-05-06', '2024-05-06 06:48:07', '2024-05-12 03:14:41'),
-(4, 'Brownies', NULL, 90000.00, 'Dalam setiap gigitan, hadirnya kelezatan yang tak tertandingi. Kami dengan bangga mempersembahkan Brownies Premium kami, penciptaan terbaik dari cokelat pilihan dan rahasia resep turun-temurun kami. Dibuat dengan teliti, setiap potongan menjanjikan pengalaman yang memanjakan lidah dan merangsang indera.\r\n\r\nKualitas Terbaik dari Bahan Pilihan\r\n\r\nKami berkomitmen pada kualitas terbaik, hanya menggunakan bahan-bahan berkualitas tinggi. Cokelat pilihan kami dipilih secara selektif untuk memberikan aroma yang kaya dan rasa yang mendalam. Kombinasi sempurna antara cokelat hitam yang kuat dan manisnya cokelat susu menciptakan harmoni cita rasa yang tak terlupakan.\r\n\r\nTekstur yang Menggoda\r\n\r\nTekstur brownies kami adalah kunci utama dari pengalaman tak tertandingi. Dengan lapisan luar yang renyah dan tengah yang lembut, setiap gigitan memberikan sensasi yang memuaskan. Kami memahami bahwa kelezatan sejati terletak pada perpaduan antara rasa dan tekstur yang sempurna.', '1715003460.jpg', 10, '2024-05-06', '2024-05-06 06:51:00', '2024-05-12 01:07:25'),
-(5, 'Bolen', NULL, 60000.00, 'Dengan keharuman lembut pisang segar yang melonjak dari setiap putaran pastri yang lembut dan renyah, Bolen Pisang Premium kami adalah simbol autentik dari kelezatan tropis. Dibuat dengan teliti menggunakan pisang pilihan dan bahan-bahan berkualitas tinggi, setiap gigitan membawa Anda ke surga rasa yang tak terlupakan.\r\n\r\nSiap untuk disajikan sebagai camilan istimewa di tengah hari yang sibuk, sebagai teman setia di acara santai bersama keluarga, atau sebagai hadiah istimewa bagi mereka yang Anda sayangi, Bolen Pisang Premium kami adalah pilihan sempurna untuk memuaskan selera Anda yang menginginkan kelezatan tropis yang autentik. Rasakan kelembutan, nikmati kelezatan.', '1715003494.jpg', 20, '2024-05-06', '2024-05-06 06:51:35', '2024-05-12 01:04:26'),
-(6, 'Bluder', NULL, 80000.00, 'Bawa pengalaman roti yang tak tertandingi ke dalam hidangan Anda dengan Roti Bluder kami. Dipanggang dengan hati-hati untuk mencapai keseimbangan sempurna antara kerenyahan luar dan kelembutan dalam, setiap gigitan Roti Bluder adalah perpaduan yang menggugah selera dan memuaskan hasrat akan rasa yang autentik\r\n\r\nKelezatan yang Tak Tertandingi dalam Setiap Gigitan\r\n\r\nRasakan kelezatan yang tak tertandingi dengan setiap gigitan Roti Bluder. Dengan rasa manis yang merayu, diselingi dengan sentuhan gurih yang memikat, Roti Bluder kami menghadirkan pengalaman rasa yang memanjakan lidah dan meninggalkan kenangan yang tak terlupakan.', '1715003551.jpg', 20, '2024-05-06', '2024-05-06 06:52:31', '2024-05-12 02:02:18');
+(1, 'Nastar', NULL, 90000.00, 'enak', '1715002762.jpg', 20, '2024-04-20', '2024-05-06 06:05:45', '2024-05-06 06:39:22'),
+(2, 'Palm Cheese', NULL, 40000.00, 'enak', '1715001144.jpg', 20, '2024-04-20', '2024-05-06 06:12:24', '2024-05-06 06:12:24'),
+(3, 'Palm Almond', NULL, 50000.00, 'enak', '1715003287.jpg', 20, '2024-05-06', '2024-05-06 06:48:07', '2024-05-06 06:48:07'),
+(4, 'Brownies', NULL, 90000.00, 'enak dan lembut', '1715003460.jpg', 10, '2024-05-06', '2024-05-06 06:51:00', '2024-05-06 06:51:00'),
+(5, 'Bolen', NULL, 60000.00, 'enak dan wangi', '1715003494.jpg', 20, '2024-05-06', '2024-05-06 06:51:35', '2024-05-06 06:51:35'),
+(6, 'Bluder', NULL, 80000.00, 'enak dan lembut seperti bolu', '1715003551.jpg', 20, '2024-05-06', '2024-05-06 06:52:31', '2024-05-06 06:52:31');
 
 -- --------------------------------------------------------
 
@@ -271,8 +255,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `phone`, `created_at`, `updated_at`) VALUES
-(1, 'daffarizqy13', 'daffa3@gmail.com', '$2y$10$dVPkKHFHVmrblb7KbeftBOMNS2fWvGfMfWBri4ATANxhdgLqh5.7W', '0895372400000', '2024-05-06 08:04:39', '2024-05-08 22:22:09'),
-(2, 'daffarizqy', 'daffa@gmail.com', '$2y$10$4WtHEnL.o9FEiAB71PRR7eCeeqw4VLT0871b49yDRZl0QJilgHipe', '086368618669', '2024-05-11 21:14:07', '2024-05-11 21:14:07');
+(1, 'daffarizqy12', 'daffa3@gmail.com', '$2y$10$dVPkKHFHVmrblb7KbeftBOMNS2fWvGfMfWBri4ATANxhdgLqh5.7W', '0895372400000', '2024-05-06 08:04:39', '2024-05-06 08:04:39');
 
 --
 -- Indexes for dumped tables
@@ -359,7 +342,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `biayas`
@@ -383,7 +366,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `keranjang`
 --
 ALTER TABLE `keranjang`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -413,7 +396,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables

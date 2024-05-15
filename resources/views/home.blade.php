@@ -71,12 +71,12 @@
             <div class="swiper-slide slide">
                 <div class="content">
                     <span>Our Special cookies</span>
-                    <h3>Cookies</h3>
+                    <h3>Nastar</h3>
                     <p>Temukan beragam varian kue kering lezat dengan hanya beberapa kali klik, dan nikmati kemudahan belanja tanpa harus keluar rumah!</p>
                     <a href="https://wa.me/+62895372499072" class="btn">order now</a>
                 </div>
                 <div class="image">
-                    <img src="{{ asset('asset/images/Cookies2.png') }}" alt="">
+                    <img src="{{"/images" .asset('Nastar.jpg') }}" alt="">
                 </div>
             </div>
 
@@ -96,11 +96,11 @@
                 <div class="content">
                     <span>Our Special menu</span>
                     <h3>Bluder</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit natus dolor cumque?</p>
+                    <p>Bawa pengalaman roti yang tak tertandingi ke dalam hidangan Anda dengan Roti Bluder kami. Dipanggang dengan hati-hati untuk mencapai keseimbangan sempurna antara kerenyahan luar dan kelembutan dalam, setiap gigitan Roti Bluder adalah perpaduan yang menggugah selera dan memuaskan hasrat akan rasa yang autentik</p>
                     <a href="#" class="btn">order now</a>
                 </div>
                 <div class="image">
-                    <img src="{{ asset('images/1714740492.jpg') }}" alt="Bluder">
+                    <img src="{{"/images" .asset('bluder.jpeg') }}" alt="">
                 </div>
             </div>
 
@@ -232,50 +232,61 @@
 
             <div class="swiper-slide slide">
                 <i class="fas fa-quote-right"></i>
-                <div class="user">
-                    <div class="user-info">
-                        <h3>D********p</h3>
-                    </div>
-                </div>
                 <br>
                 <br>
-                <p>saya tidak menyesal beli kue disini dan sangatlah memuaskan. dengan harga yang segitu saya mendapatkan rasa yang sangatlah enak</p>
+                <br>
+                <br>
+                <p>
+                    Saya baru pertama kali mencoba kue kering dari Bu'E ,
+                    dan saya langsung jatuh cinta! Rasanya enak dan bahan-bahannya terasa berkualitas.
+                    Ini pasti akan menjadi langganan tetap untuk kue kering di rumah saya. Terima kasih, Bu'E!
+                </p>
             </div>
 
             <div class="swiper-slide slide">
                 <i class="fas fa-quote-right"></i>
-                <div class="user">
-                    <div class="user-info">
-                        <h3>Putri Ibu</h3>
-                    </div>
-                </div>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit fugiat consequuntur repellendus aperiam deserunt nihil, corporis fugit voluptatibus voluptate totam neque illo placeat eius quis laborum aspernatur quibusdam. Ipsum, magni.</p>
+                <br>
+                <br>
+                <br>
+                <br>
+                <p>
+                    Saya sangat terkesan dengan kualitas kue kering dari Bu'E.
+                    Rasa dan teksturnya benar-benar sempurna, seperti buatan rumah.
+                    Ini adalah pengalaman belanja online terbaik saya untuk kue kering. Pasti akan membeli lagi!
+                </p>
             </div>
 
             <div class="swiper-slide slide">
                 <i class="fas fa-quote-right"></i>
-                <div class="user">
-                    <div class="user-info">
-                        <h3>Putri Ibu</h3>
-                    </div>
-                </div>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit fugiat consequuntur repellendus aperiam deserunt nihil, corporis fugit voluptatibus voluptate totam neque illo placeat eius quis laborum aspernatur quibusdam. Ipsum, magni.</p>
+                <br>
+                <br>
+                <br>
+                <br>
+                <p>
+                    saya udah beberapa kali pesan kue dari Bu'E
+                    saya sangat kagum dengan rasa kue disini sangatlah menggugah selera.
+                    saya sangat merekomendasikan kue disini untuk kalian yang ingin mencoba kue yang enak dan lezat.
+                    keluarga saya sangat suka dengan kue Bu'E
+                </p>
             </div>
 
             <div class="swiper-slide slide">
                 <i class="fas fa-quote-right"></i>
-                <div class="user">
-                    <div class="user-info">
-                        <h3>Putri Ibu</h3>
-                    </div>
-                </div>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit fugiat consequuntur repellendus aperiam deserunt nihil, corporis fugit voluptatibus voluptate totam neque illo placeat eius quis laborum aspernatur quibusdam. Ipsum, magni.</p>
+                <br>
+                <br>
+                <br>
+                <br>
+                <p>
+                    Saya sangat suka dengan kue kering dari Bu'E.
+                    Rasanya enak dan bahan-bahannya berkualitas.
+                    Saya pasti akan merekomendasikan kue kering dari Bu'E kepada teman-teman saya.
+                    Terima Kasih Bue Selalu Ada Buat Kamu
+                </p>
             </div>
 
         </div>
 
     </div>
-
 </section>
 
 <!-- review section ends -->
@@ -300,7 +311,7 @@
 
         <div class="box">
             <h3>contact info</h3>
-            <a href="https://wa.me/+62895372499072">Whatsapp</a>
+            <a href="https://wa.me/+6285891088920">Whatsapp</a>
             <a href="mailto: buepastry@gmail.com">Email</a>
             <a href="#">Bekasi, Indonesia - 17121</a>
         </div>
@@ -336,7 +347,7 @@
                                 Message: ${message}`;
 
         // Kirim pesan WhatsApp
-        const whatsappLink = `https://wa.me/62895372499072?text=${encodeURIComponent(whatsappMessage)}`;
+        const whatsappLink = `https://wa.me/+6285891088920?text=${encodeURIComponent(whatsappMessage)}`;
         window.open(whatsappLink, '_blank');
 
         // Atau, jika Anda ingin mengarahkan pengguna ke aplikasi WhatsApp di perangkat mobile, gunakan kode di bawah ini
@@ -371,7 +382,7 @@
              if (response.ok) {
                  // Langsung arahkan pengguna ke percakapan WhatsApp
                  const message = `Saya mau pesan ini ${productName} - Quantity: ${productQuantity}`;
-                 const whatsappLink = `whatsapp://send?phone=+62895372499072&text=${encodeURIComponent(message)}`;
+                 const whatsappLink = `whatsapp://send?phone=+6285891088920&text=${encodeURIComponent(message)}`;
                  window.location.href = whatsappLink;
              } else {
                  console.error('Failed to add product to cart');
